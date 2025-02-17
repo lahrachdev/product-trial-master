@@ -1,0 +1,22 @@
+model Product {
+  id               Int     @id @default(autoincrement())
+  code            String   @unique
+  name            String
+  description     String
+  image          String
+  category       String
+  price          Float
+  quantity       Int
+  internalReference String
+  shellId        Int
+  inventoryStatus InventoryStatus
+  rating         Float
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+enum InventoryStatus {
+  INSTOCK
+  LOWSTOCK
+  OUTOFSTOCK
+}

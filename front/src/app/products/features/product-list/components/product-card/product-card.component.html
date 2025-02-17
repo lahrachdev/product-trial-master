@@ -1,0 +1,18 @@
+<p-card class="product-card">
+  <div>
+    <span class="category-label">{{ product?.category }}</span>
+    <p-badge [value]="quantityAdded" severity="success" />
+  </div>
+  <div class="product-name">{{ product?.name }}</div>
+  <div class="product-name">{{ product?.price }} $</div>
+
+  <ng-template pTemplate="footer">
+    <p-button
+      label="Add to cart"
+      [raised]="true"
+      severity="warning"
+      (onClick)="updateQuantity(1)"
+      [disabled]="disabled"
+    />
+  </ng-template>
+</p-card>

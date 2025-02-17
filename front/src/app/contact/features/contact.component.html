@@ -1,0 +1,44 @@
+<p-card header="Contactez-nous">
+  <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <div class="p-field flex flex-column">
+      <label for="email">Email</label>
+      <input id="email" type="email" pInputText formControlName="email" />
+      <small
+        *ngIf="
+          contactForm.get('email')?.invalid && contactForm.get('email')?.touched
+        "
+        class="p-error"
+      >
+        Email valide requis
+      </small>
+    </div>
+
+    <div class="p-field flex flex-column">
+      <label for="message">Message</label>
+      <textarea
+        id="message"
+        rows="5"
+        pInputTextarea
+        formControlName="message"
+      ></textarea>
+      <small
+        *ngIf="
+          contactForm.get('message')?.invalid &&
+          contactForm.get('message')?.touched
+        "
+        class="p-error"
+      >
+        Le message est requis (max 300 caractères)
+      </small>
+    </div>
+
+    <button
+      type="submit"
+      pButton
+      label="Envoyer"
+      [disabled]="contactForm.invalid"
+    ></button>
+  </form>
+
+  <p-toast></p-toast>
+</p-card>

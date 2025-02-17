@@ -1,0 +1,25 @@
+.product-card {
+    display: block;
+    margin-bottom: 8px;
+    padding: 16px;
+    border-radius: 6px;
+}
+
+.category-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary-color);
+}
+
+.product-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary-color);
+    margin-top: 4px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+}

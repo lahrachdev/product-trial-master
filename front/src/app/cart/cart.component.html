@@ -1,0 +1,56 @@
+<p-sidebar [(visible)]="visible" (onHide)="close.emit()" position="right">
+  <div class="cart-container">
+    <h3>Shopping Cart</h3>
+    <ng-container *ngIf="cartItems().length; else emptyCart">
+      <div class="cart-items">
+        <div class="cart-item" *ngFor="let item of cartItems()">
+          <div class="item-info">
+            <span class="item-name">{{ item.name }}</span>
+            <span class="item-price">${{ item.price }}</span>
+          </div>
+
+          <div class="item-actions">
+            <button
+              pButton
+              icon="pi pi-minus"
+              class="p-button-text"
+              (click)="
+                onQuantityChange({ id: item.id, quantity: item.quantity - 1 })
+              "
+              [disabled]="item.quantity <= 1"
+            ></button>
+            <span class="item-quantity">{{ item.quantity }}</span>
+            <button
+              pButton
+              icon="pi pi-plus"
+              class="p-button-text"
+              (click)="
+                onQuantityChange({ id: item.id, quantity: item.quantity + 1 })
+              "
+            ></button>
+            <button
+              pButton
+              icon="pi pi-trash"
+              class="p-button-danger p-button-text"
+              (click)="onRemoveItem(item.id)"
+            ></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="cart-footer">
+        <h4>Total: ${{ cartTotal() }}</h4>
+        <button
+          pButton
+          label="Clear Cart"
+          class="p-button-danger"
+          (click)="onClearCart()"
+        ></button>
+      </div>
+    </ng-container>
+
+    <ng-template #emptyCart>
+      <p>Your cart is empty.</p>
+    </ng-template>
+  </div>
+</p-sidebar>

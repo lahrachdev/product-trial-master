@@ -1,0 +1,16 @@
+<div class="quick-add-container">
+  <button
+    pButton
+    icon="pi pi-minus"
+    class="p-button-rounded p-button-text"
+    (click)="decrement()"
+    [disabled]="quantity === 0"
+  ></button>
+  <span class="quantity">{{ quantity }}</span>
+  <button
+    pButton
+    icon="pi pi-plus"
+    class="p-button-rounded p-button-text"
+    (click)="increment()"
+  ></button>
+</div>
